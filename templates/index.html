@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head><title>Clasificación de Plantas</title></head>
+<body>
+    <h1>Sube una imagen de una hoja</h1>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Predecir</button>
+    </form>
+    <h2 id="result"></h2>
+    <img id="preview" style="max-width: 300px; display: none;" />
+
+    <script>
+        const form = document.getElementById('upload-form');
+        const result = document.getElementById('result');
+        const preview = document.getElementById('preview');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData();
+            const file = document.querySelector('input[type=file]').files[0];
+            formData.append('image', file);
+
+            // Mostrar previsualización
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = 'block';
+
+            // Enviar al servidor
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                result.innerText = "Resultado: " + data.prediction;
+            });
+        });
+    </script>
+</body>
+</html>
