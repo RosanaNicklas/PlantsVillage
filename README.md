@@ -20,7 +20,7 @@ También necesitas tener un modelo guardado como plantvillage_mobilenet.h5 en la
 
 
 <div align="center">
-  <img src="P1.png" alt="System Overview" width="85%">
+  <img src="P2.png" alt="System Overview" width="85%">
 </div>
 
 
@@ -39,7 +39,7 @@ Ejecuta la aplicación desde la terminal:
 bash
 
 <div align="center">
-  <img src="P2.png" alt="System Overview" width="85%">
+  <img src="P1.png" alt="System Overview" width="85%">
 </div>
 1
 streamlit run deepstream.py
